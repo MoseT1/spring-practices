@@ -1,6 +1,7 @@
 package com.bitacademy.hellospring.controller;
 
 public class UserVo {
+	
 	private Long no;
 	private String name;
 	private String email;
@@ -42,5 +43,10 @@ public class UserVo {
 	}
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
+	}
+	@Override
+	public String toString() {
+		return "UserVo [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
+				+ gender + ", joinDate=" + joinDate + "]";
 	}
 }

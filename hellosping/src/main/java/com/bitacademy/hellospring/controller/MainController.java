@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
 
 	@ResponseBody
-	@RequestMapping("/")
+	@RequestMapping({"/", "/main"}) //url 다중으로 설정할떄는 배열
 	public String main() {
 		return "MainControlelr.main()";
 	}
