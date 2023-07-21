@@ -17,14 +17,14 @@
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
 			</Pattern>
 		</encoder>
-		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">     
 			<FileNamePattern>/logex/logex2.%i.log.zip</FileNamePattern>
-			<MinIndex>1</MinIndex>
+			<MinIndex>1</MinIndex>											<!-- 압축파일index 1부터 10까지, 10넘어가면 1을 지우고 1에 쓰기 -->
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>
 		<triggeringPolicy
 			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>50KB</MaxFileSize>
+			<MaxFileSize>50KB</MaxFileSize>									<!-- 파일크기가 50kb가 넘어가면 압축하고 다른 파일에 남겨라 -->
 		</triggeringPolicy>
 	</appender>
 	
