@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+
+	<!-- 기본 생성자로 빈 생성하기 -->
+	<bean class="com.bitacademy.container.user.User" />
+
+	<!-- 기본 생성자로 빈 생성하기 : id 부여 -->
+	<bean id="user2" name="usr2"
+		class="com.bitacademy.container.user.User" />
+
+	<!-- 파라미터 1개인 생성자로 빈 생성하기 -->
+	<bean id="user3" class="com.bitacademy.container.user.User">
+		<constructor-arg value="홍길동" />
+	</bean>
+
+	<!-- 파라미터 2개인 생성자로 빈 생성하기01 -->
+	<bean id="user4" class="com.bitacademy.container.user.User">
+		<constructor-arg value="4" />
+		<constructor-arg value="크라켄" />
+	</bean>
+
+	<!-- 파라미터 2개인 생성자로 빈 생성하기02 index 추가해서 순서 바껴도 괜찮음. -->
+	<bean id="user5" class="com.bitacademy.container.user.User">
+		<constructor-arg index="1" value="크라켄" />
+		<constructor-arg index="0" value="5" />
+	</bean>
+
+
+	<!-- setter 사용하기 -->
+	<bean id="user6" class="com.bitacademy.container.user.User">
+		<property name="no" value="6" />
+		<property name="name" value="르블랑" />
+	</bean>
+	
+	<!-- setter 사용하기: List setting -->
+	<bean id="user9" class="com.bitacademy.container.user.User">
+		<property name="no" value="9" />
+		<property name="name" value="아이언맨" />
+		<property name="friends">
+			<list>
+				<value>스파이더맨</value>
+				<value>헐크</value>
+				<value>캡틴아메리카</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- DI 하기 -->
+	<bean id="friend" class="com.bitacademy.container.user.Friend">
+		<constructor-arg value="말자하" />
+	</bean>
+
+
+	<!-- DI 하기 01 : setter 사용 -->
+	<bean id="user7" class="com.bitacademy.container.user.User">
+		<property name="no" value="7" />
+		<property name="name" value="자야" />
+		<property name="friend" ref="friend" />
+	</bean>
+
+	<!-- DI 하기 01 : constructor 사용 -->
+	<bean id="user8" class="com.bitacademy.container.user.User">
+		<property name="no" value="8" />
+		<property name="name" value="라칸" />
+		<property name="friend" ref="friend" />
+	</bean>
+</beans>
